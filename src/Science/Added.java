@@ -36,7 +36,56 @@ public class Added {
         creator.close();
 
     }
+    public static double AllGradesAverage(String studentID,String CurrentTerm) throws FileNotFoundException {
+    double average=0;
+        int term = Integer.parseInt(CurrentTerm);
+        int entrance = Integer.parseInt(FileControl.getStudentEntrance(Student.student, studentID));
+        int units=0;
 
+        for (int termCoun = entrance; termCoun <= term; termCoun++) {
+            average +=( TermGradesAverage(studentID, String.valueOf(termCoun)) * TermUnits(studentID, String.valueOf(termCoun)));
+            units += TermUnits(studentID, String.valueOf(termCoun));
+        }
+        average/=units;
+        average*=1000;
+        average=(int)average/1000;
+
+        return average;
+    }
+    public static int TermUnits(String studentID,String Term) throws FileNotFoundException {
+        int units=0;
+        String stID;
+        String term;
+        String Grade;
+        String courseN;
+
+        Scanner scan=new Scanner(Added.added);
+        while (scan.hasNext()){
+            stID=scan.next();
+            if (stID.equalsIgnoreCase(studentID)){
+
+                courseN=scan.next();
+                term=scan.next();
+                if (term.equalsIgnoreCase(Term)){
+
+                    Grade=scan.next();
+                    if (Grade.equalsIgnoreCase("-")){
+
+                        units+=0;
+
+                    }else {
+
+                        units += Integer.parseInt(FileControl.getCourseUnit(Course.course, courseN));
+                    }
+                }
+            }
+
+        }
+        scan.close();
+
+
+        return units;
+    }
   public static double TermGradesAverage(String studentID,String Term) throws FileNotFoundException {
       double average;
       double SUM=0;
