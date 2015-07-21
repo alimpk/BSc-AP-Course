@@ -172,7 +172,177 @@ public class MainFrame extends JFrame {
         newStudentButton.gridy = 2;
         home.add(newStudentB, newStudentButton);
 
+        JButton newCourceB = new JButton("درس جدید");
+        newCourceB.setToolTipText("ایجاد درس جدید");
+        newCourceB.setBackground(new Color(176, 224, 230));
+        newCourceB.setFont(new Font("B Homa", newCourceB.getFont().getStyle() | Font.BOLD, newCourceB.getFont().getSize() + 6));
+        newCourceB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        newCourceB.setBorder(UIManager.getBorder("Button.border"));
+        GridBagConstraints newCourceButton = new GridBagConstraints();
+        newCourceButton.fill = GridBagConstraints.BOTH;
+        newCourceButton.insets = new Insets(0, 0, 5, 0);
+        newCourceButton.gridx = 7;
+        newCourceButton.gridy = 3;
+        home.add(newCourceB, newCourceButton);
 
+        JButton searchB = new JButton("جستجو");
+        searchB.setVerifyInputWhenFocusTarget(false);
+        searchB.setToolTipText("جهت دیدن اطلاعات دانشجوی مورد نظر کلیک کنید\r\n");
+        searchB.setBackground(new Color(176, 224, 230));
+        searchB.setFont(new Font("B Homa", searchB.getFont().getStyle(), searchB.getFont().getSize() + 6));
+        searchB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        searchB.setBorder(UIManager.getBorder("Button.border"));
+        GridBagConstraints searchButton = new GridBagConstraints();
+        searchButton.fill = GridBagConstraints.BOTH;
+        searchButton.insets = new Insets(0, 0, 5, 0);
+        searchButton.gridx = 7;
+        searchButton.gridy = 4;
+        home.add(searchB, searchButton);
+
+        JButton courseAddB = new JButton("اخذ درس");
+        courseAddB.setToolTipText("اخذ درس جدید");
+        courseAddB.setFont(new Font("B Homa", courseAddB.getFont().getStyle(), courseAddB.getFont().getSize() + 6));
+        courseAddB.setBackground(new Color(176, 224, 230));
+        courseAddB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        courseAddB.setBorder(UIManager.getBorder("Button.border"));
+        GridBagConstraints courseAddButton = new GridBagConstraints();
+        courseAddButton.fill = GridBagConstraints.BOTH;
+        courseAddButton.insets = new Insets(0, 0, 5, 0);
+        courseAddButton.gridx = 7;
+        courseAddButton.gridy = 5;
+        home.add(courseAddB, courseAddButton);
+
+
+        JButton courseDelB = new JButton("حذف درس");
+        courseDelB.setToolTipText("حذف درس انتخاب شده");
+        courseDelB.setFont(new Font("B Homa", courseDelB.getFont().getStyle(), courseDelB.getFont().getSize() + 6));
+        courseDelB.setBackground(new Color(176, 224, 230));
+        courseDelB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        courseDelB.setBorder(UIManager.getBorder("Button.border"));
+        GridBagConstraints courseDelButton = new GridBagConstraints();
+        courseDelButton.fill = GridBagConstraints.BOTH;
+        courseDelButton.insets = new Insets(0, 0, 5, 0);
+        courseDelButton.gridx = 7;
+        courseDelButton.gridy = 6;
+        home.add(courseDelB, courseDelButton);
+
+        JButton allInformationB = new JButton("اطلاعات جامع دانشجویان");
+        allInformationB.setToolTipText("اطلاعات کلیه دانشجویان");
+        allInformationB.setFont(new Font("B Homa", allInformationB.getFont().getStyle(), allInformationB.getFont().getSize() + 4));
+        allInformationB.setBackground(new Color(176, 224, 230));
+        allInformationB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        allInformationB.setBorder(UIManager.getBorder("Button.border"));
+        GridBagConstraints allInformationButton = new GridBagConstraints();
+        allInformationButton.fill = GridBagConstraints.BOTH;
+        allInformationButton.insets = new Insets(0, 0, 5, 0);
+        allInformationButton.gridx = 7;
+        allInformationButton.gridy = 7;
+        home.add(allInformationB, allInformationButton);
+
+        JButton aboutMeB = new JButton("درباره ما");
+        aboutMeB.setToolTipText("درباره ما ");
+        aboutMeB.setBackground(new Color(255, 140, 0));
+        aboutMeB.setFont(new Font("B Homa", aboutMeB.getFont().getStyle(), aboutMeB.getFont().getSize() + 6));
+        aboutMeB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        aboutMeB.setBorder(UIManager.getBorder("Button.border"));
+        GridBagConstraints aboutMeButton = new GridBagConstraints();
+        aboutMeButton.fill = GridBagConstraints.BOTH;
+        aboutMeButton.insets = new Insets(0, 0, 5, 0);
+        aboutMeButton.gridx = 7;
+        aboutMeButton.gridy = 8;
+        home.add(aboutMeB, aboutMeButton);
+
+        JButton ExitButton = new JButton("خروج");
+        ExitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                dispose();
+            }
+        });
+        ExitButton.setFont(new Font("B Homa", Font.PLAIN, 32));
+        ExitButton.setToolTipText("خروج ");
+        ExitButton.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+        ExitButton.setBackground(new Color(165, 42, 42));
+        GridBagConstraints ExitBtn = new GridBagConstraints();
+        ExitBtn.anchor = GridBagConstraints.SOUTH;
+        ExitBtn.fill = GridBagConstraints.HORIZONTAL;
+        ExitBtn.insets = new Insets(0, 0, 5, 0);
+        ExitBtn.gridx = 7;
+        ExitBtn.gridy = 9;
+        home.add(ExitButton, ExitBtn);
+
+        JPanel footPanel = new JPanel();
+        footPanel.setBackground(new Color(154, 205, 50));
+        footPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        GridBagConstraints frame_footPanel = new GridBagConstraints();
+        frame_footPanel.gridwidth = 8;
+        frame_footPanel.fill = GridBagConstraints.BOTH;
+        frame_footPanel.gridx = 0;
+        frame_footPanel.gridy = 10;
+        home.add(footPanel, frame_footPanel);
+
+        JLabel lblSims = new JLabel("SIMS © 2015 Rm00D All rights reserved.");
+        footPanel.add(lblSims);
+        newStudentB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new NewStudentDialog();
+                home.setVisible(false);
+
+
+            }
+        });
+        newCourceB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                new newCourseDialog();
+                home.setVisible(false);
+            }
+        });
+        allInformationB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SelectAllInf();
+            }
+        });
+        aboutMeB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new About();
+            }
+        });
+
+
+        courseAddB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new AddCourseDialog();
+            }
+        });
+        courseDelB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new DelCourseDialog();
+            }
+        });
+        ExitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        mnItmExit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        searchB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SearchInput();
+            }
+        });
 
 
 
