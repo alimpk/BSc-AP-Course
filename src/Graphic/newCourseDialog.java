@@ -450,6 +450,128 @@ public class newCourseDialog extends JDialog{
 
 
 
-      
+        {
+            JPanel buttonPane = new JPanel();
+            buttonPane.setBackground(new Color(123, 167, 232));
+            getContentPane().add(buttonPane, BorderLayout.SOUTH);
+            {
+                GridBagLayout gbl_buttonPane = new GridBagLayout();
+                gbl_buttonPane.columnWidths = new int[]{145, 204, 51, 0, 0};
+                gbl_buttonPane.rowHeights = new int[]{35, 0};
+                gbl_buttonPane.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+                gbl_buttonPane.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+                buttonPane.setLayout(gbl_buttonPane);
+                {
+                    JButton okButton = new JButton("تائید");
+                    okButton.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+                    okButton.setBackground(new Color(50, 205, 50));
+                    okButton.setForeground(new Color(147, 112, 219));
+                    okButton.setFont(new Font("B Koodak", Font.PLAIN, 30));
+                    okButton.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent arg0) {
+                            if (ValidateInput.isCourseCorrectInput(getNewCourseName(),getNewCourseID())){
+                                try {
+                                    if (FileControl.existStringInFile(Course.course,getNewCourseID())==false){
+                                    try {
+                                        new Course(getNewCourseID(), getNewCourseName(), getCourseUNIT(), getCourseTYPE());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                        ValidateInput.InputErrorDialog("درس جدید با موفقیت ثبت شد.");
+                                        MainFrame.home.setVisible(true);
+                                        dispose();
+                                    }else {
+                                        ValidateInput.InputErrorDialog("درس مورد نظر قبلا ثبت شده است\nیا کد در را اشتباه وارد کرده اید");
+                                    }
+                                } catch (FileNotFoundException e) {
+                                    e.printStackTrace();
+                                }
+
+
+
+                            }
+                            else {
+                                ValidateInput.InputErrorDialog("اطلاعات را درست وارد نمایید");
+                            }
+                        }
+                    });
+                    {
+                        JButton help = new JButton("راهنما ؟!");
+                        help.setFont(new Font("B Sina", Font.PLAIN, 16));
+                        GridBagConstraints gbc_help = new GridBagConstraints();
+                        gbc_help.fill = GridBagConstraints.BOTH;
+                        gbc_help.insets = new Insets(0, 0, 0, 5);
+                        gbc_help.gridx = 0;
+                        gbc_help.gridy = 0;
+                        buttonPane.add(help, gbc_help);
+                    }
+                    okButton.setActionCommand("OK");
+                    GridBagConstraints gbc_okButton = new GridBagConstraints();
+                    gbc_okButton.anchor = GridBagConstraints.NORTHWEST;
+                    gbc_okButton.insets = new Insets(0, 0, 0, 5);
+                    gbc_okButton.gridx = 2;
+                    gbc_okButton.gridy = 0;
+                    buttonPane.add(okButton, gbc_okButton);
+                    getRootPane().setDefaultButton(okButton);
+                }
+            }
+            JButton cancelButton = new JButton("انصراف");
+            cancelButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent arg0) {
+                    MainFrame.home.setVisible(true);
+                    dispose();
+                }
+            });
+            cancelButton.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+            cancelButton.setBackground(new Color(255, 0, 0));
+            cancelButton.setForeground(new Color(147, 112, 219));
+            cancelButton.setFont(new Font("B Koodak", Font.PLAIN, 30));
+            cancelButton.setActionCommand("Cancel");
+            GridBagConstraints gbc_cancelButton = new GridBagConstraints();
+            gbc_cancelButton.anchor = GridBagConstraints.NORTHWEST;
+            gbc_cancelButton.gridx = 3;
+            gbc_cancelButton.gridy = 0;
+            buttonPane.add(cancelButton, gbc_cancelButton);
+
+
+            //*********************************
+
+        }
+    }
+
+    public String getNewCourseName(){
+        return this.newCourseName.getText();
+    }
+    public String getNewCourseID(){
+        return this.newCourseID.getText();
+    }
+    public String getCourseTYPE() {
+        String string=null;
+        if(this.courseType== FileControl.CourseType.BASIC)
+            string = "ASLI";
+        if (this.courseType== FileControl.CourseType.PUBIC)
+            string = "OMOMI";
+        if (this.courseType== FileControl.CourseType.PRIMARY)
+            string="PAYEH";
+        if (this.courseType== FileControl.CourseType.PROFESSIONAL)
+            string="TAKHASSOSI";
+        if (this.courseType== FileControl.CourseType.OPTIONAL)
+            string = "EKHTIYARI";
+        else
+            string="JOBRANI";
+
+
+        return string;
+    }
+    public String getCourseUNIT(){
+        if (this.courseUnit== FileControl.CourseUnit.ONE)
+        return "1";
+        else if (this.courseUnit== FileControl.CourseUnit.TWO)
+            return "2";
+        else if (this.courseUnit== FileControl.CourseUnit.THREE)
+            return "3";
+        else
+            return "4";
+    }
 
 }
